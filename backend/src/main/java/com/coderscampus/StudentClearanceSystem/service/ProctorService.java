@@ -30,6 +30,7 @@ public class ProctorService {
     private PasswordResetTokenRepository presetRepo;
     
     public Proctor saveUser(StaffDto staff){
+        System.out.println("\n\n\n\n Hello mister staff!!!!!!!!");
         Proctor newUser=new Proctor();
 
          List<Proctor> users = proRepo.findByPosition(staff.getRoleName());

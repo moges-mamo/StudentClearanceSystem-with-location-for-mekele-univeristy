@@ -81,52 +81,6 @@ public class DepartmentUserService {
 
 
 
-    @Transactional
-
-     public DepartmentUser saveEmpoloyee(EmployeeDto emp){
-        DepartmentUser newUser=new DepartmentUser();
-           
-         System.out.println("\n\n\n\n   emp:");
-         System.out.println(emp.toString());
-        newUser.setFname(emp.getFname());
-        newUser.setMname(emp.getMname());
-        newUser.setLname(emp.getLname());
- 
-        newUser.setPosition(AuthorityEnum.ROLE_EMPLOYEE.name());
-        
-        newUser.setGender(emp.getGender());
-        newUser.setPhoneNumber(emp.getPhoneNumber());
-        newUser.setDepartment(emp.getDepartment());
-        System.out.println(emp.getDepartment().getName());
-        Account newAccount=new Account();
-
-          String staffId;
-       
-            staffId=IDGenerator.generateID("emp");
-        
-            newAccount.setUsername(staffId);
-           
-           System.out.println("staffid? "+staffId);
-
-        PasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
-        String password=passwordEncoder.encode(newUser.getFname().trim());
-        newAccount.setPassword(password);
-        newAccount.setCreatedDate(LocalDate.now());
-        newAccount.setIsDefault(true);
-        newAccount.setEmail(emp.getEmail());
-
-        Account savedAccount=accountService.saveAccount(newAccount);
-        Authority authority=new Authority();
-     
-      
-        authority.setAuthority(AuthorityEnum.ROLE_EMPLOYEE.name());
-        
-        authority.setUser(savedAccount);
-        authService.saveAuthority(authority);
-
-        newUser.setAccount(savedAccount);
-        return deptUserRepo.save(newUser);
-    }
 
 
 

@@ -56,12 +56,12 @@ const ViewStatus=()=>{
      responsesData.filter((response)=>response.position==='ROLE_CAFETERIA')[0]);
      copyData.push(responsesData&&
      responsesData.filter((response)=>response.position==='ROLE_PROCTOR')[0]);
-     if( clearanceRequest &&clearanceRequest.requestedReason==='"Id Replacement"')
+     if( clearanceRequest &&clearanceRequest.requestedReason==='Id Replacement')
      {
      copyData.push(responsesData&&
      responsesData.filter((response)=>response.position==='ROLE_CAMPUS_POLICE')[0]);
      }
-      else if( clearanceRequest &&clearanceRequest.requestedReason==='"Withdrawal"')
+      else if( clearanceRequest &&clearanceRequest.requestedReason==='Withdrawal')
      {
     
      copyData.push(responsesData&&

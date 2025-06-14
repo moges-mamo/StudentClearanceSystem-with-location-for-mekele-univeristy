@@ -99,7 +99,7 @@ public class ClearanceRequestService {
             clResponseRepository.save(clResponse);
 
             //intialize college dean
-            if(savedClearance.getRequestedReason().equals("\"Withdrawal\"")){
+            if(savedClearance.getRequestedReason().equals("Withdrawal")){
                 List<CollegeUser> deans=collegeUserService.getCollegeDean();
                 clResponse=new ClearanceResponse();
                 clResponse.setClearanceRequest(savedClearance);
@@ -109,7 +109,7 @@ public class ClearanceRequestService {
                 clResponseRepository.save(clResponse);
             }
             //intialize Campus Police
-            if(savedClearance.getRequestedReason().equals("\"Id Replacement\"")){
+            if(savedClearance.getRequestedReason().equals("Id Replacement")){
                 List<CampusUser> campusUsers=campusUserService.getCampusPolice();
                 clResponse=new ClearanceResponse();
                 clResponse.setClearanceRequest(savedClearance);

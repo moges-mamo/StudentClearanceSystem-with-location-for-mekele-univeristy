@@ -1,30 +1,30 @@
-import { Button, Card, Row, Col } from 'react-bootstrap';
+import { Button, Card, Row, Col } from "react-bootstrap";
 import ajax from "../../../services/fetchService";
 import { useUser } from "../../../UserProvider/index";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import ViewStaffHeader from "../../header/ViewStaffHeader";
-import { useNavigate, Link } from 'react-router-dom';
-import CollegeViewComponent from "./CollegeViewComponent";  // Correct import without extra "s"
+import { useNavigate, Link } from "react-router-dom";
+import CollegeViewComponent from "./CollegeViewComponent"; // Correct import without extra "s"
 import "../../../styles/Registration.css";
-import "../../../styles/table.css";  // Importing CSS file without 'styles' alias
+import "../../../styles/table.css"; // Importing CSS file without 'styles' alias
 
 import Loader from "../../../components/Loader";
 
-const CollegeDean = () => {
-  const [isLoading, setIsLoading] = useState(false);
+const Registrar = () => {
+    const [isLoading, setIsLoading] = useState(false);
 
-  return (
-    <div className="main-container">
-      <ViewStaffHeader />
-      <div className="main-content">
-        {isLoading && <Loader />}
-        <h1 className="registrarTitle">List of College Dean</h1>  {/* Use regular CSS classes */}
-        <div className="HrRegistrar">  {/* Use regular CSS classes */}
-          <CollegeViewComponent url="/api/college_users/registrars" />
+    return (
+        <div className="main-container">
+            <ViewStaffHeader />
+            <div className="main-content">
+                {isLoading && <Loader />}
+                <h1 className="registrarTitle">List of Registrars</h1>
+                <div className="HrRegistrar">
+                    <CollegeViewComponent url="/api/college_users/college_deans" />
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
-export default CollegeDean;
+export default Registrar;

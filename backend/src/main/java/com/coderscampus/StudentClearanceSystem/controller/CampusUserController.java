@@ -7,10 +7,12 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import com.coderscampus.StudentClearanceSystem.domain.Account;
+import com.coderscampus.StudentClearanceSystem.domain.CampusUser;
 import com.coderscampus.StudentClearanceSystem.dto.StaffDto;
 import com.coderscampus.StudentClearanceSystem.enums.AuthorityEnum;
 import com.coderscampus.StudentClearanceSystem.service.CampusUserService;
 import com.coderscampus.StudentClearanceSystem.util.AuthorityUtil;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/campus_users")
@@ -36,7 +38,20 @@ public class CampusUserController {
     public ResponseEntity<?> getCafeteria(@AuthenticationPrincipal Account account){
         try{
             if(AuthorityUtil.hasRole(AuthorityEnum.ROLE_ADMIN.name(),account)){
-                return ResponseEntity.ok(campusUserService.getCafeteria());
+                System.out.println("\n\n\n**** Firstname: ");
+List<CampusUser> users = campusUserService.getCafeteria();
+
+// Check if users list is null or empty to avoid NullPointerException
+if (users != null && !users.isEmpty()) {
+    for (CampusUser user : users) {
+        System.out.println(user.getFname());
+    }
+} else {
+    System.out.println("No users found in the cafeteria.");
+}
+
+return ResponseEntity.ok(users);
+
             }
             else{
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
@@ -61,17 +76,7 @@ public class CampusUserController {
        
     }
 
-    @GetMapping("general_stores")
-    public ResponseEntity<?> getGeneralStore(@AuthenticationPrincipal Account account){
-      
-            if(AuthorityUtil.hasRole(AuthorityEnum.ROLE_ADMIN.name(),account)){
-                return ResponseEntity.ok(campusUserService.getGeneralStore());
-            }
-            else{
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-            }
-       
-    }
+    
 
 
 

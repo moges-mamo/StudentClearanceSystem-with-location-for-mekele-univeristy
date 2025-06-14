@@ -81,7 +81,14 @@ public class CampusUserService {
     }
 
     public List<CampusUser> getCafeteria(){
-        return campusUserRepo.findByPosition(AuthorityEnum.ROLE_CAFETERIA.name());
+      System.out.println("\n\n\n\n cafetria is good.******");
+        List<CampusUser>users= campusUserRepo.findByPosition(AuthorityEnum.ROLE_CAFETERIA.name());
+        System.out.println(AuthorityEnum.ROLE_CAFETERIA.name());
+        for(CampusUser user:users){
+          System.out.println(user.getLname());
+        }
+        System.out.println(users.size());
+        return users;
       }
     
      
@@ -89,9 +96,7 @@ public class CampusUserService {
         return campusUserRepo.findByPosition(AuthorityEnum.ROLE_CAMPUS_POLICE.name());
       }
 
-      public List<CampusUser> getGeneralStore(){
-        return campusUserRepo.findByPosition(AuthorityEnum.ROLE_GENERAL_STORE.name());
-      }
+     
 
 
          @Transactional

@@ -9,7 +9,7 @@ public class PasswordEncoderTest {
     public void encode_password(){
         PasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
         System.out.println("\n\n\n*************************************");
-        System.out.println(passwordEncoder.encode("asdfasdf"));
+        System.out.println(passwordEncoder.encode("abc@123"));
         System.out.println(passwordEncoder.matches("asdfasdf", "$2a$10$A3cN9UrC0YrgKmCFYboVm.c.5dAZm5VK4tJpSPLsypZ2PHmwZ3oha"));
     }
 }

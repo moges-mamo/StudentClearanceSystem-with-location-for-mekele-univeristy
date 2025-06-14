@@ -48,19 +48,7 @@ public class DepartmentUserController {
     }  
      
 
-        @PostMapping("employee")
-    public ResponseEntity<?> saveEmpoloyee(@AuthenticationPrincipal Account account,
-    @RequestBody EmployeeDto empDto){
-        try{
-        if(AuthorityUtil.hasRole(AuthorityEnum.ROLE_HR.name(),account)){
-           return ResponseEntity.ok(deptUserService.saveEmpoloyee(empDto));
-        }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-    }
-    catch(Exception e){
-        return ResponseEntity.status(HttpStatus.CONFLICT).build();
-    }
-    }
+      
    
 
 

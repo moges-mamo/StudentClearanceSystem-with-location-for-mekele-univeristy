@@ -86,8 +86,8 @@ public class StudentService {
         studentTempoRepo.delete(studentTempo);
           
 
-        emailService.sendEmail(studentTempo.getEmail(), "Registration approved", 
-            "your username is="+savedAccount.getUsername()+" and your default password is="+studentTempo.getFname()+".\n\n" + baseUrl);
+        /*EmailService.sendEmail(studentTempo.getEmail(), "Registration approved", 
+            "your username is="+savedAccount.getUsername()+" and your default password is="+studentTempo.getFname()+".\n\n" + baseUrl);*/
         return studentRepo.save(newStudent);
     }
     public List<Student> getStudentsByCollege(Account account){

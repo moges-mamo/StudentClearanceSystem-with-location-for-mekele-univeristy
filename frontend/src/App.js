@@ -40,6 +40,7 @@ import RequestView from './StaffDashboard/Requests/RequestView'
 
 import HRDashboard from "./HRRegistrar/index"
 import RegisterEmp from "./HRRegistrar/RegisterEmployee/index"
+import MapComponent from "./StudentDashboard/MapComponent";
 
 import {useEffect,useState } from "react";
 import { jwtDecode } from "jwt-decode";
@@ -173,6 +174,24 @@ const App = () => {
           
           </PrivateRoute>)
           } />
+
+             <Route path="/map" element={
+          roles.find((role)=>role==="ROLE_STUDENT")?
+          (
+          <PrivateRoute>
+          <MapComponent/>
+          </PrivateRoute>
+          )
+           :
+          (
+          <PrivateRoute>
+          
+          </PrivateRoute>)
+          } />
+
+
+          
+          
           
           <Route path="/register_employee" element={
             roles.find((role)=>role==="ROLE_HR")?
@@ -480,4 +499,3 @@ const App = () => {
 };
 
 export default App;
-
